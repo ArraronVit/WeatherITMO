@@ -1,0 +1,235 @@
+.refresh-button-mobile {
+    display: none;
+}
+
+.refresh-button-desktop {
+    height: 55px;
+    font-size: 20px;
+    border: 0;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 50px;
+    color: #748488;
+    background-color: #c9d2d7;
+    border-radius: 12px;
+}
+
+.heading-text{
+    margin: 10px;
+}
+
+.big-icon-weather {
+    height: 200px;
+    width: 200px;
+}
+
+.wind,
+.cloudy,
+.pressure,
+.humidity,
+.coordinates {
+    display: flex;
+    margin: 10px;
+    justify-content: space-between;
+    background-color: #a8afb0;
+    color: white;
+    padding: 0.5em;
+    box-sizing: border-box;
+    font-size: 20px;
+}
+
+.type-param {
+    font-weight: bold;
+    justify-content: space-between;
+}
+
+.favorites {
+    font-size: 30px;
+    margin-left: 10px;
+    margin-bottom: auto;
+    margin-top: auto;
+    color: #78868a;
+}
+
+.add-card {
+    text-align: right;
+    margin: auto 10px;
+}
+
+.add-button {
+    background: white;
+    border: 0;
+    height: 60px;
+    width: 60px;
+    margin-bottom: auto;
+    margin-top: auto;
+}
+
+.container {
+    max-width: 1080px;
+    margin: auto;
+    display: grid;
+    color: #748488;
+    text-align: left;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+    grid-template-areas:
+        "card-city card-params"
+        "favorites add-card"
+        "list-cards list-cards";
+}
+
+.list-cards {
+    display: grid;
+    text-align: left;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr 400px 1fr;
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-template-areas:
+        "card card"
+        "card card"
+        "card card";
+}
+
+.card {
+    position: relative;
+    vertical-align: bottom;
+}
+
+.delete {
+    background: white;
+    border: 0;
+    height: 60px;
+    width: 60px;
+}
+
+.icon-weather {
+    height: 50px;
+    width: 70px;
+}
+
+
+.temperature {
+    color: #848484;
+    font-size: 40px;
+    vertical-align: bottom;
+}
+
+.add-text {
+    font-size: 20px;
+    vertical-align: top;
+    height: 60px;
+    width: 300px;
+}
+
+.data {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+}
+
+.name {
+    color: #848484;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.big-name {
+    color: #848484;
+    font-size: 60px;
+    margin: 10px;
+}
+
+.big-temperature {
+    color: #848484;
+    font-size: 100px;
+}
+
+.list-params {
+    padding: 0;
+    margin: 0;
+}
+
+.card-title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 10px;
+}
+
+
+.name,
+.icon-weather,
+.temperature,
+.delete {
+    margin-top: auto;
+    margin-bottom: 0;
+}
+
+.heading{
+    max-width: 1080px;
+    display: flex;
+    font-size: 30px;
+    color: #848484;
+    padding: 0;
+    margin:auto;
+    text-align: left;
+}
+
+@media all and (max-width: 900px) {
+
+    .refresh-button-mobile {
+        display: inline;
+        height: 80px;
+        width: 80px;
+        background: white;
+        border: 0;
+        margin: auto 15px;
+        float: right;
+    }
+    .refresh-button-desktop {
+        display: none;
+    }
+    .container {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        grid-template-areas:
+                "big-name"
+            "data"
+            "card-params"
+            "favorites"
+            "add-card"
+            "list-cards";
+    }
+
+    .add-card {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .add-text {
+        flex: 1;
+    }
+
+    .add-button {
+        flex: none;
+        background: white;
+        border: 0;
+        height: 60px;
+        width: 60px;
+    }
+
+    .list-cards {
+        display: contents;
+    }
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
