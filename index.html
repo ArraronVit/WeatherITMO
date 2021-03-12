@@ -1,275 +1,127 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <title>Погода</title>
     <meta name="viewport" content="width=device-width, initial-scale=0.7">
-    <script src="js/script.js"></script>
     <link rel="stylesheet" href="css/style.css">
-    <title>Погода здесь</title>
+    <script src="js/script.js"></script>
 </head>
 
-<body>
+<body class="body">
     <header class="heading">
         <h1 class="heading-text">Погода здесь</h1>
-        <button class="refresh-button-desktop">
+        <button class="refresh-button-desktop" id="refresh-button-desktop" onclick="navigator.geolocation.getCurrentPosition(success, error)">
             Обновить геолокацию
         </button>
-        <button class="refresh-button-mobile">
-            <img src="assets/images/refresh.png" alt="refresh">
+        <button class="refresh-button-mobile" id="refresh-button-mobile" onclick="navigator.geolocation.getCurrentPosition(success, error)">
+            <img src="assets/images/refresh.svg" alt="refresh">
         </button>
     </header>
 
     <main class="container">
-        <div class="card-city">
-            <h2 class="big-name">Saint Petersburg</h2>
+        <div id="loadInfrorm" class="loadInform">
+            <div class="inform">
+                Подождите, данные загружаются
+            </div>
+            <img class="refresh-image" src="assets/images/refresh.svg" alt="refresh">
+        </div>
+
+        <div id="big-card-city" class="big-card-city">
+            <h2 class="big-name" id="big-name"></h2>
             <div class="data">
-                <img class="big-icon-weather" src="assets/images/noWeather.png" alt="default">
-                <div class="big-temperature">8°C</div>
+                <img class="big-icon-weather" id="big-icon-weather" src="" alt="icon">
+                <div class="big-temperature" id="big-temp">
+                    20°C
+                </div>
             </div>
         </div>
-        <div class="card-params">
+
+        <div id="big-card-params" class="big-card-params">
             <ul class="list-params">
                 <li class="wind">
                     <div class=type-param>Ветер</div>
-                    <div class=value-param>Moderate breeze, 6.0 m/s, North-northwest</div>
+                    <div class=value-param id="big-wind">Moderate breeze</div>
                 </li>
                 <li class="cloudy">
                     <div class=type-param>Облачность</div>
-                    <div class=value-param>Broken clouds</div>
+                    <div class=value-param id="big-clouds">No clouds</div>
                 </li>
                 <li class="pressure">
                     <div class=type-param>Давление</div>
-                    <div class=value-param>1013 hpa</div>
+                    <div class=value-param id="big-pressure">1013 hpa</div>
                 </li>
                 <li class="humidity">
                     <div class=type-param>Влажность</div>
-                    <div class=value-param>52%</div>
+                    <div class=value-param id="big-humidity">52%</div>
                 </li>
                 <li class="coordinates">
                     <div class=type-param>Координаты</div>
-                    <div class=value-param>[59.88, 30.42]</div>
+                    <div class=value-param id="big-coords">[59.88, 30.42]</div>
                 </li>
             </ul>
         </div>
+
         <div class="favorites">
             <h2>Избранное</h2>
         </div>
-        <div class="add-card">
-            <label>
-                <input class="add-text" type="text" placeholder="Добавить новый город">
-            </label>
-            <button class="add-button">
-                <img src="assets/images/add.png" alt="add">
+
+        <form class="add-card" id="add_card">
+            <!--suppress HtmlFormInputWithoutLabel -->
+            <input class="add-text" id="add-city-name" type="text" placeholder="Добавить новый город">
+            <button class="add-button" id="add_button">
+                <img src="assets/images/add.svg" alt="add">
             </button>
-        </div>
-        <ul class="list-cards">
-            <li class="card">
-                <div class="card-title">
-                    <h3 class="name">Moscow</h3>
-                    <div class="temperature">5°C</div>
-                    <img class="icon-weather" src="assets/images/noWeather.png" alt="default">
-                    <button class="delete">
-                        <img src="assets/images/close.png" alt="close">
-                    </button>
-                </div>
-                <div class="card-params">
-                    <ul class="list-params">
-                        <li class="wind">
-                            <div class=type-param>Ветер</div>
-                            <div class=value-param>Moderate breeze, 6.0 m/s, North-northwest</div>
-                        </li>
-                        <li class="cloudy">
-                            <div class=type-param>Облачность</div>
-                            <div class=value-param>Broken clouds</div>
-                        </li>
-                        <li class="pressure">
-                            <div class=type-param>Давление</div>
-                            <div class=value-param>1013 hpa</div>
-                        </li>
-                        <li class="humidity">
-                            <div class=type-param>Влажность</div>
-                            <div class=value-param>52%</div>
-                        </li>
-                        <li class="coordinates">
-                            <div class=type-param>Координаты</div>
-                            <div class=value-param>[59.88, 30.42]</div>
-                        </li>
-                    </ul>
-                </div>
-            </li>
-            <li class="card">
-                <div class="card-title">
-                    <h3 class="name">Helsinki</h3>
-                    <div class="temperature">3°C</div>
-                    <img class="icon-weather" src="assets/images/noWeather.png" alt="default">
-                    <button class="delete">
-                        <img src="assets/images/close.png" alt="close">
-                    </button>
-                </div>
-                <div class="card-params">
-                    <ul class="list-params">
-                        <li class="wind">
-                            <div class=type-param>Ветер</div>
-                            <div class=value-param>Moderate breeze, 6.0 m/s, North-northwest</div>
-                        </li>
-                        <li class="cloudy">
-                            <div class=type-param>Облачность</div>
-                            <div class=value-param>Broken clouds</div>
-                        </li>
-                        <li class="pressure">
-                            <div class=type-param>Давление</div>
-                            <div class=value-param>1013 hpa</div>
-                        </li>
-                        <li class="humidity">
-                            <div class=type-param>Влажность</div>
-                            <div class=value-param>52%</div>
-                        </li>
-                        <li class="coordinates">
-                            <div class=type-param>Координаты</div>
-                            <div class=value-param>[59.88, 30.42]</div>
-                        </li>
-                    </ul>
-                </div>
-            </li>
-            <li class="card">
-                <div class="card-title">
-                    <h3 class="name">Moscow</h3>
-                    <div class="temperature">5°C</div>
-                    <img class="icon-weather" src="assets/images/noWeather.png" alt="default">
-                    <button class="delete">
-                        <img src="assets/images/close.png" alt="close">
-                    </button>
-                </div>
-                <div class="card-params">
-                    <ul class="list-params">
-                        <li class="wind">
-                            <div class=type-param>Ветер</div>
-                            <div class=value-param>Moderate breeze, 6.0 m/s, North-northwest</div>
-                        </li>
-                        <li class="cloudy">
-                            <div class=type-param>Облачность</div>
-                            <div class=value-param>Broken clouds</div>
-                        </li>
-                        <li class="pressure">
-                            <div class=type-param>Давление</div>
-                            <div class=value-param>1013 hpa</div>
-                        </li>
-                        <li class="humidity">
-                            <div class=type-param>Влажность</div>
-                            <div class=value-param>52%</div>
-                        </li>
-                        <li class="coordinates">
-                            <div class=type-param>Координаты</div>
-                            <div class=value-param>[59.88, 30.42]</div>
-                        </li>
-                    </ul>
-                </div>
-            </li>
-            <li class="card">
-                <div class="card-title">
-                    <h3 class="name">Helsinki</h3>
-                    <div class="temperature">3°C</div>
-                    <img class="icon-weather" src="assets/images/noWeather.png" alt="default">
-                    <button class="delete">
-                        <img src="assets/images/close.png" alt="close">
-                    </button>
-                </div>
-                <div class="card-params">
-                    <ul class="list-params">
-                        <li class="wind">
-                            <div class=type-param>Ветер</div>
-                            <div class=value-param>Moderate breeze, 6.0 m/s, North-northwest</div>
-                        </li>
-                        <li class="cloudy">
-                            <div class=type-param>Облачность</div>
-                            <div class=value-param>Broken clouds</div>
-                        </li>
-                        <li class="pressure">
-                            <div class=type-param>Давление</div>
-                            <div class=value-param>1013 hpa</div>
-                        </li>
-                        <li class="humidity">
-                            <div class=type-param>Влажность</div>
-                            <div class=value-param>52%</div>
-                        </li>
-                        <li class="coordinates">
-                            <div class=type-param>Координаты</div>
-                            <div class=value-param>[59.88, 30.42]</div>
-                        </li>
-                    </ul>
-                </div>
-            </li>
-            <li class="card">
-                <div class="card-title">
-                    <h3 class="name">Moscow</h3>
-                    <div class="temperature">5°C</div>
-                    <img class="icon-weather" src="assets/images/noWeather.png" alt="default">
-                    <button class="delete">
-                        <img src="assets/images/close.png" alt="close">
-                    </button>
-                </div>
-                <div class="card-params">
-                    <ul class="list-params">
-                        <li class="wind">
-                            <div class=type-param>Ветер</div>
-                            <div class=value-param>Moderate breeze, 6.0 m/s, North-northwest</div>
-                        </li>
-                        <li class="cloudy">
-                            <div class=type-param>Облачность</div>
-                            <div class=value-param>Broken clouds</div>
-                        </li>
-                        <li class="pressure">
-                            <div class=type-param>Давление</div>
-                            <div class=value-param>1013 hpa</div>
-                        </li>
-                        <li class="humidity">
-                            <div class=type-param>Влажность</div>
-                            <div class=value-param>52%</div>
-                        </li>
-                        <li class="coordinates">
-                            <div class=type-param>Координаты</div>
-                            <div class=value-param>[59.88, 30.42]</div>
-                        </li>
-                    </ul>
-                </div>
-            </li>
-            <li class="card">
-                <div class="card-title">
-                    <h3 class="name">Helsinki</h3>
-                    <div class="temperature">3°C</div>
-                    <img class="icon-weather" src="assets/images/noWeather.png" alt="default">
-                    <button class="delete">
-                        <img src="assets/images/close.png" alt="close">
-                    </button>
-                </div>
-                <div class="card-params">
-                    <ul class="list-params">
-                        <li class="wind">
-                            <div class=type-param>Ветер</div>
-                            <div class=value-param>Moderate breeze, 6.0 m/s, North-northwest</div>
-                        </li>
-                        <li class="cloudy">
-                            <div class=type-param>Облачность</div>
-                            <div class=value-param>Broken clouds</div>
-                        </li>
-                        <li class="pressure">
-                            <div class=type-param>Давление</div>
-                            <div class=value-param>1013 hpa</div>
-                        </li>
-                        <li class="humidity">
-                            <div class=type-param>Влажность</div>
-                            <div class=value-param>52%</div>
-                        </li>
-                        <li class="coordinates">
-                            <div class=type-param>Координаты</div>
-                            <div class=value-param>[59.88, 30.42]</div>
-                        </li>
-                    </ul>
-                </div>
-            </li>
+        </form>
+
+        <ul class="list-cards" id="list-cards">
         </ul>
     </main>
 
+    <template id="new_card">
+        <li class="card" id="card">
+
+            <div class="card-title">
+                <h3 class="name" id="city-name">Moscow</h3>
+                <img class="icon-weather" id="icon_weather" src="" alt="icon">
+                <div class="temperature" id="temp"></div>
+                <button class="delete" id="delete" onclick="deleteItem(this)">
+                    <img src="assets/images/close.svg" alt="close">
+                </button>
+            </div>
+
+            <div class="loadInformCard" id="loadInformCard">
+                <div class="inform">Подождите, данные загружаются</div>
+                <img class="refresh-image" src="assets/images/refresh.svg" alt="refresh">
+            </div>
+
+            <div class="card-params" id="card-params">
+                <ul class="list-params">
+                    <li class="wind">
+                        <div class=type-param>Ветер</div>
+                        <div class=value-param id="wind"></div>
+                    </li>
+                    <li class="cloudy">
+                        <div class=type-param>Облачность</div>
+                        <div class=value-param id="clouds"></div>
+                    </li>
+                    <li class="pressure">
+                        <div class=type-param>Давление</div>
+                        <div class=value-param id="pressure">1013 hpa</div>
+                    </li>
+                    <li class="humidity">
+                        <div class=type-param>Влажность</div>
+                        <div class=value-param id="humidity">52%</div>
+                    </li>
+                    <li class="coordinates">
+                        <div class=type-param>Координаты</div>
+                        <div class=value-param id="coords">[59.88, 30.42]</div>
+                    </li>
+                </ul>
+            </div>
+
+        </li>
+    </template>
 </body>
 </html>

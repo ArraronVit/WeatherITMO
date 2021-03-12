@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bb03b956-50b5-478a-b3d5-ccc8efdcf577" name="Default Changelist" comment="" />
+    <list default="true" id="bb03b956-50b5-478a-b3d5-ccc8efdcf577" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/assets/images/add.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/close.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/refresh.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/add.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/close.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/refresh.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/script.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -10,18 +21,25 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="JavaScript File" />
         <option value="HTML File" />
         <option value="CSS File" />
-        <option value="JavaScript File" />
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1oswT0PVDEre6gPLX0b1zTTdBEu" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -33,6 +51,11 @@
       <recent name="$PROJECT_DIR$/assets/images" />
     </key>
   </component>
+  <component name="RunManager">
+    <configuration name="Unnamed" type="ChromiumRemoteDebugType" factoryName="Chromium Remote" nameIsGenerated="true" port="9229">
+      <method v="2" />
+    </configuration>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -41,11 +64,91 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1614088609375</updated>
-      <workItem from="1614088610412" duration="10802000" />
+      <workItem from="1614088610412" duration="11103000" />
+      <workItem from="1614338917744" duration="3425000" />
+      <workItem from="1615384020290" duration="15762000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="184" y="109" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1615467264471">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="184" y="109" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.900@0.0.1440.900" timestamp="1615467264471" />
+    <state x="458" y="201" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1615403936125">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="458" y="201" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1440.900@0.0.1440.900" timestamp="1615403936125" />
+    <state x="458" y="201" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.25.1440.788@0.25.1440.788" timestamp="1615401056916" />
+    <state width="1440" height="312" key="GridCell.Tab.0.bottom" timestamp="1615467283554">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1440" height="312" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1615467283554" />
+    <state width="1440" height="312" key="GridCell.Tab.0.center" timestamp="1615467283551">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1440" height="312" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1615467283551" />
+    <state width="1440" height="312" key="GridCell.Tab.0.left" timestamp="1615467283551">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1440" height="312" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1615467283551" />
+    <state width="1440" height="312" key="GridCell.Tab.0.right" timestamp="1615467283554">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1440" height="312" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1615467283554" />
+    <state width="1440" height="312" key="GridCell.Tab.1.bottom" timestamp="1615467283555">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1440" height="312" key="GridCell.Tab.1.bottom/0.0.1440.900@0.0.1440.900" timestamp="1615467283555" />
+    <state width="1440" height="312" key="GridCell.Tab.1.center" timestamp="1615467283555">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1440" height="312" key="GridCell.Tab.1.center/0.0.1440.900@0.0.1440.900" timestamp="1615467283555" />
+    <state width="1440" height="312" key="GridCell.Tab.1.left" timestamp="1615467283554">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1440" height="312" key="GridCell.Tab.1.left/0.0.1440.900@0.0.1440.900" timestamp="1615467283554" />
+    <state width="1440" height="312" key="GridCell.Tab.1.right" timestamp="1615467283555">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1440" height="312" key="GridCell.Tab.1.right/0.0.1440.900@0.0.1440.900" timestamp="1615467283555" />
+    <state width="1440" height="312" key="GridCell.Tab.2.bottom" timestamp="1615467283556">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1440" height="312" key="GridCell.Tab.2.bottom/0.0.1440.900@0.0.1440.900" timestamp="1615467283556" />
+    <state width="1440" height="312" key="GridCell.Tab.2.center" timestamp="1615467283556">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1440" height="312" key="GridCell.Tab.2.center/0.0.1440.900@0.0.1440.900" timestamp="1615467283556" />
+    <state width="1440" height="312" key="GridCell.Tab.2.left" timestamp="1615467283556">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1440" height="312" key="GridCell.Tab.2.left/0.0.1440.900@0.0.1440.900" timestamp="1615467283556" />
+    <state width="1440" height="312" key="GridCell.Tab.2.right" timestamp="1615467283556">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1440" height="312" key="GridCell.Tab.2.right/0.0.1440.900@0.0.1440.900" timestamp="1615467283556" />
+    <state width="1440" height="312" key="GridCell.Tab.3.bottom" timestamp="1615467283558">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1440" height="312" key="GridCell.Tab.3.bottom/0.0.1440.900@0.0.1440.900" timestamp="1615467283558" />
+    <state width="1440" height="312" key="GridCell.Tab.3.center" timestamp="1615467283557">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1440" height="312" key="GridCell.Tab.3.center/0.0.1440.900@0.0.1440.900" timestamp="1615467283557" />
+    <state width="1440" height="312" key="GridCell.Tab.3.left" timestamp="1615467283557">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1440" height="312" key="GridCell.Tab.3.left/0.0.1440.900@0.0.1440.900" timestamp="1615467283557" />
+    <state width="1440" height="312" key="GridCell.Tab.3.right" timestamp="1615467283557">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1440" height="312" key="GridCell.Tab.3.right/0.0.1440.900@0.0.1440.900" timestamp="1615467283557" />
   </component>
 </project>

@@ -3,22 +3,23 @@
 }
 
 .refresh-button-desktop {
-    height: 55px;
+    height: 60px;
     font-size: 20px;
     border: 0;
     margin-top: auto;
     margin-bottom: auto;
-    margin-left: 50px;
+    margin-left: 100px;
     color: #748488;
     background-color: #c9d2d7;
     border-radius: 12px;
 }
 
-.heading-text{
+.heading-text {
     margin: 10px;
 }
 
 .big-icon-weather {
+    display: none;
     height: 200px;
     width: 200px;
 }
@@ -35,12 +36,12 @@
     color: white;
     padding: 0.5em;
     box-sizing: border-box;
-    font-size: 20px;
+    font-size: 25px;
 }
 
 .type-param {
     font-weight: bold;
-    justify-content: space-between;
+    margin-right: 20px;
 }
 
 .favorites {
@@ -65,33 +66,17 @@
     margin-top: auto;
 }
 
-.container {
-    max-width: 1080px;
-    margin: auto;
-    display: grid;
-    color: #748488;
-    text-align: left;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: 1fr;
-    grid-template-areas:
-        "card-city card-params"
-        "favorites add-card"
-        "list-cards list-cards";
-}
-
 .list-cards {
     display: grid;
     text-align: left;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: 1fr 400px 1fr;
     padding: 0;
     margin: 0;
     list-style-type: none;
     grid-column-start: 1;
     grid-column-end: 3;
+    column-gap: 60px;
     grid-template-areas:
-        "card card"
-        "card card"
         "card card";
 }
 
@@ -108,19 +93,21 @@
 }
 
 .icon-weather {
+    display: none;
     height: 50px;
     width: 70px;
 }
 
-
 .temperature {
+    display: none;
     color: #848484;
     font-size: 40px;
     vertical-align: bottom;
 }
 
 .add-text {
-    font-size: 20px;
+    font-size: 25px;
+    padding-left: 10px;
     vertical-align: top;
     height: 60px;
     width: 300px;
@@ -139,12 +126,14 @@
 }
 
 .big-name {
+    display: none;
     color: #848484;
     font-size: 60px;
     margin: 10px;
 }
 
 .big-temperature {
+    display: none;
     color: #848484;
     font-size: 100px;
 }
@@ -159,8 +148,8 @@
     flex-direction: row;
     justify-content: space-between;
     margin: 10px;
+    gap: 30px;
 }
-
 
 .name,
 .icon-weather,
@@ -170,17 +159,84 @@
     margin-bottom: 0;
 }
 
-.heading{
+.heading {
     max-width: 1080px;
     display: flex;
     font-size: 30px;
     color: #848484;
     padding: 0;
-    margin:auto;
+    margin: auto;
     text-align: left;
 }
 
-@media all and (max-width: 900px) {
+.body {
+    color: gray;
+    max-width: 1080px;
+    margin: auto;
+    display: grid;
+}
+
+.container {
+    max-width: 1080px;
+    display: grid;
+    text-align: left;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+    grid-template-areas:
+        "loadInform loadInform"
+        "big-card-city big-card-params"
+        "favorites add-card"
+        "list-cards list-cards";
+}
+
+.card-city,
+.big-card-params,
+.big-card-city {
+    display: none;
+}
+
+.refresh-image {
+    height: 60px;
+    width: 60px;
+    margin: auto;
+    text-align: center;
+}
+
+.inform {
+    display: block;
+}
+
+.loadInform {
+    font-size: 60px;
+    display: grid;
+    text-align: center;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 10px 1fr;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-template-areas:
+        "inform"
+        "refresh-image";
+}
+
+.loadInformCard {
+    font-size: 30px;
+    display: grid;
+    text-align: center;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 100px 1fr;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-template-areas:
+        "inform"
+        "refresh-image";
+}
+
+.card-params {
+    display: none;
+}
+
+@media all and (max-width: 1000px) {
 
     .refresh-button-mobile {
         display: inline;
@@ -191,20 +247,9 @@
         margin: auto 15px;
         float: right;
     }
+
     .refresh-button-desktop {
         display: none;
-    }
-    .container {
-        display: grid;
-        grid-template-columns: 1fr;
-        grid-template-rows: auto;
-        grid-template-areas:
-                "big-name"
-            "data"
-            "card-params"
-            "favorites"
-            "add-card"
-            "list-cards";
     }
 
     .add-card {
@@ -214,6 +259,8 @@
 
     .add-text {
         flex: 1;
+        font-size: 25px;
+        padding-left: 10px;
     }
 
     .add-button {
@@ -226,6 +273,26 @@
 
     .list-cards {
         display: contents;
+    }
+
+    .body {
+        max-width: 1080px;
+        margin: auto;
+        display: grid;
+        color: #848484;
+        text-align: left;
+    }
+
+    .card-title {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        margin: 10px;
+        gap: 20px;
+    }
+
+    .container {
+        display: block;
     }
 }
 
