@@ -162,10 +162,11 @@
 .heading {
     max-width: 1080px;
     display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
     font-size: 30px;
     color: #848484;
     padding: 0;
-    margin: auto;
     text-align: left;
 }
 

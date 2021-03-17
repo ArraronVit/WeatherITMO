@@ -6,14 +6,14 @@ const lon = "lon="
 let actualCards = []
 
 async function setDataHead(url) {
-    let big_card_city = document.getElementById(
+    let bigCardCity = document.getElementById(
         'big-card-city')
-    let big_card_params = document.getElementById(
+    let bigCardParams = document.getElementById(
         'big-card-params')
     let loadInform = document.getElementById(
         'loadInfrorm')
-    big_card_city.style.display = 'none'
-    big_card_params.style.display = 'none'
+    bigCardCity.style.display = 'none'
+    bigCardParams.style.display = 'none'
     loadInform.style.display = 'block'
 
     let json = await fetch(url).then(function (resp) {
@@ -26,8 +26,8 @@ async function setDataHead(url) {
             alert("Ошибка при выполнении запроса! Попробуйте обновить страницу")
         })
 
-    let city_name = json.name
-    let city_temp = Math.round(json.main.temp)
+    let cityName = json.name
+    let cityTemp = Math.round(json.main.temp)
 
     let iconCode = json.weather[0].icon
     let iconUrl = "https://openweathermap.org/img/w/" + iconCode + ".png"
@@ -37,8 +37,7 @@ async function setDataHead(url) {
 
     let latCoord = json.coord.lat
     let lonCoord = json.coord.lon
-    let coords = "[" + latCoord.toString() + ", " +
-        lonCoord.toString() + "]"
+    let coords = "[" + latCoord.toString() + ", " + lonCoord.toString() + "]"
     let wind = json.wind.speed
     let clouds = json.clouds.all
     let pressure = json.main.pressure
@@ -51,40 +50,37 @@ async function setDataHead(url) {
     document.getElementById('big-coords').innerHTML = coords
 
     loadInform.style.display = 'none'
+    bigCardParams.style.display = 'block'
+    bigCardCity.style.display = 'block'
 
-    big_card_params.style.display = 'block'
-
-    document.getElementById('big-name').innerHTML = city_name.toString()
+    document.getElementById('big-name').innerHTML = cityName.toString()
     document.getElementById('big-name').style.display = "block"
-    document.getElementById('big-temp').innerHTML = city_temp.toString() + "°C"
+    document.getElementById('big-temp').innerHTML = cityTemp.toString() + "°C"
     document.getElementById('big-temp').style.display = "block"
-    big_card_city.style.display = 'block'
+
 }
 
 async function success(position) {
-    console.log("success")
-
     const latitude = position.coords.latitude.toString()
     const longitude = position.coords.longitude.toString()
     const url = "https://api.openweathermap.org/data/2.5/weather?" + lat + latitude + "&" + lon + longitude + "&appid=" + apiKey + "&units=metric"
 
     await setDataHead(url)
 
-    checkLocalStorage()
+    updateLocalStorage()
 }
 
 async function error(err) {
     if (err.PERMISSION_DENIED) {
-        console.log("access denied")
-
         const url = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + apiKey + "&units=metric"
 
         await setDataHead(url)
-        checkLocalStorage()
+
+        updateLocalStorage()
     }
 }
 
-function checkLocalStorage() {
+function updateLocalStorage() {
     if (localStorage.getItem("cities") !== null) {
         const cards = JSON.parse(localStorage["cities"])
         console.log(actualCards)
@@ -92,12 +88,12 @@ function checkLocalStorage() {
         for (let i = 0; i < cards.length; ++i) {
             let flag = true
             for (let j = 0; j < actualCards.length; ++j) {
-                if (cards[i]["0"] === actualCards[j]["0"]) {
+                if (cards[i][0] === actualCards[j][0]) {
                     flag = false
                     break
                 }
             }
-            if (flag === true) {
+            if (flag) {
                 diff.push(cards[i])
             }
         }
@@ -112,30 +108,31 @@ function checkLocalStorage() {
 navigator.geolocation.getCurrentPosition(success, error);
 
 async function addCard(city) {
-    let t = new_card.content.cloneNode(true)
-    const td = t.querySelector("#city-name")
-    td.textContent = city["1"]
-    const idCard = city["0"]
-    const idt = t.querySelector("#card")
-    idt.id = idCard.toString()
-    const idd = t.querySelector("#delete")
-    idd.id += idCard.toString()
-    const tb = document.getElementById("list-cards")
-    const clone = document.importNode(t, true)
-    tb.prepend(clone)
+    let newCard = new_card.content.cloneNode(true)
+    const cityName = newCard.querySelector("#city-name")
+    cityName.textContent = city[1]
+    const idCard = city[0]
+    const card = newCard.querySelector("#card")
+    card.id = idCard.toString()
+    const deleteCard = newCard.querySelector("#delete")
+    deleteCard.id += idCard.toString()
+    const cardsList = document.getElementById("list-cards")
+    const clone = document.importNode(newCard, true)
+    cardsList.prepend(clone)
     return setDataCard(city)
 }
 
 async function clickAdd(event) {
     const city = [Date.now(), event.target.querySelector("#add-city-name").value]
+    for (let i=0; i < actualCards.length; ++i) {
+       let card = actualCards[i]
+       if (city[1] == card[1]) {
+           alert(city[1] + " already in your favourites!")
+           return
+       }
+    }
     let result = await addCard(city)
-    console.log(result)
     if (result === 0) {
-        let cards = [];
-        if (localStorage.getItem("cities") !== null) {
-            cards = JSON.parse(localStorage["cities"])
-        }
-        cards.push(city)
         actualCards.push(city)
         localStorage.setItem("cities", JSON.stringify(actualCards))
     } else {
@@ -149,7 +146,7 @@ function deleteItem(obj) {
     if (localStorage.getItem("cities") !== null) {
         cards = JSON.parse(localStorage["cities"])
     }
-    actualCards = cards.filter(item => item["0"] !== idCard)
+    actualCards = cards.filter(item => item["0"] != idCard)
     localStorage.setItem("cities", JSON.stringify(actualCards))
     obj.parentElement.parentElement.remove()
 }
@@ -158,11 +155,10 @@ function deleteItemByCity(city) {
     let idCard = city[0]
     let obj = document.getElementById(idCard)
     obj.remove()
-
 }
 
 async function setDataCard(city) {
-    const url = "https://api.openweathermap.org/data/2.5/weather?q=" + city["1"] + "&appid=" + apiKey + "&units=metric"
+    const url = "https://api.openweathermap.org/data/2.5/weather?q=" + city[1] + "&appid=" + apiKey + "&units=metric"
     let flag = 0
 
     let json = await fetch(url).then(function (resp) {
@@ -180,8 +176,8 @@ async function setDataCard(city) {
     if (flag === 1) {
         return 1
     }
-
-    let city_temp = Math.round(json.main.temp)
+    console.log(json)
+    let cityTemperature = Math.round(json.main.temp)
 
     let iconCode = json.weather[0].icon
     let iconUrl = "https://openweathermap.org/img/w/" + iconCode + ".png"
@@ -195,10 +191,10 @@ async function setDataCard(city) {
     let pressure = json.main.pressure
     let humidity = json.main.humidity
 
-    let cityCard = document.getElementById(city["0"])
+    let cityCard = document.getElementById(city[0])
 
     const cityTemp = cityCard.querySelector("#temp")
-    cityTemp.textContent = city_temp.toString() + "°C"
+    cityTemp.textContent = cityTemperature.toString() + "°C"
     const cityIcon = cityCard.querySelector("#icon_weather")
     cityIcon.src = iconUrl
     const cityWind = cityCard.querySelector("#wind")
