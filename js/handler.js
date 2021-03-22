@@ -16,13 +16,6 @@ async function addCard(city) {
 
 async function clickAdd(event) {
     const city = [Date.now(), event.target.querySelector("#add-city-name").value]
-    for (let i=0; i < actualCards.length; ++i) {
-       let card = actualCards[i]
-       if (city[1] == card[1]) {
-           alert(city[1] + " already in your favourites!")
-           return
-       }
-    }
     let result = await addCard(city)
     if (result === 0) {
         actualCards.push(city)
@@ -38,7 +31,7 @@ function deleteItem(obj) {
     if (localStorage.getItem("cities") !== null) {
         cards = JSON.parse(localStorage["cities"])
     }
-    actualCards = cards.filter(item => item["0"] != idCard)
+    actualCards = cards.filter(item => item[0] != idCard)
     localStorage.setItem("cities", JSON.stringify(actualCards))
     obj.parentElement.parentElement.remove()
 }
