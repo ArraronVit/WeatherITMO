@@ -25,6 +25,7 @@ class CityModel {
         city.locationLat = response.coord.lat;
         city.locationLon = response.coord.lon;
         city.coordinates = "[" + city.locationLat.toString() + ", " + city.locationLon.toString() + "]";
+
         return city;
     }
 
@@ -63,12 +64,12 @@ let models = [];
 
 async function buildModelFrom(url) {
     flag = 0;
-    let response = await fetch(url)
+    const response = await fetch(url)
         try {
-            let city = await response.json();
+            const city = await response.json();
             cityModel = CityModel.buildModel(city);
-            for (let i=0; i < models.length; ++i) {
-                if (models[i].name == cityModel.name) {
+            for (let item of models) {
+                if (item.name == cityModel.name) {
                     alert(cityModel.name + " already in your favourites!");
                     flag = 1;
                     return flag;
