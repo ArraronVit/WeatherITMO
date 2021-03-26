@@ -5,21 +5,21 @@ async function setDataHead(url) {
 
     await layoutLoader(true);
     await buildModelFrom(url);
-    await layoutHeader(cityModel);
+    await layoutHeader(currentCityModel);
     await layoutLoader(false);
 }
 
 async function setDataCard(city) {
 
     const url = cardDataRequest(city);
-    const val = await buildModelFrom(url);
+    const result = await buildModelFrom(url);
 
-    if (val != 0) {
-        return val;
+    if (result != 0) {
+        return result;
     } else {
         const cityCard = document.getElementById(city[0]);
-        await layoutCard(cityCard);
-        return val;
+        await layoutCard(cityCard, currentCityModel);
+        return result;
     }
 }
 

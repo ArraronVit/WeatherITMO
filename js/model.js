@@ -59,27 +59,32 @@ class CityModel {
 }
 
 let flag = 0;
-let cityModel = null;
-let models = [];
+let currentCityModel = null;
+let cityModels = [];
 
 async function buildModelFrom(url) {
     flag = 0;
     const response = await fetch(url)
         try {
             const city = await response.json();
-            cityModel = CityModel.buildModel(city);
-            for (let item of models) {
-                if (item.name == cityModel.name) {
-                    alert(cityModel.name + " already in your favourites!");
-                    flag = 1;
-                    return flag;
+            currentCityModel = CityModel.buildModel(city);
+            for (const model of cityModels) {
+                if (model.name == currentCityModel.name) {
+                    if (model.name == cityModels[0].name) {
+                        flag = 1;
+                        return flag;
+                    } else {
+                        alert(currentCityModel.name + " already in your favourites!");
+                        flag = 1;
+                        return flag;
+                    }
                 }
             }
-            models.push(cityModel);
+            cityModels.push(currentCityModel);
             return flag;
 
         } catch (error) {
-            alert("Request error! Try to refresh the page.");
+            alert("Request error! Maybe entered city name is incorrect.");
             flag = 1;
             return flag;
         }

@@ -14,11 +14,11 @@ async function layoutHeader(cityModel) {
     document.getElementById('big-icon-weather').style.display = "block";
 }
 
-async function layoutCard(cityCard) {
+async function layoutCard(cityCard, cityModel) {
 
     cityCard.querySelector("#temp").textContent = cityModel.temperature + "°C";
     cityCard.querySelector("#icon_weather").src = cityModel.iconSrc;
-    cityCard.querySelector("#wind").textContent = cityModel.windSpeed + " m/s,  " + cityModel.windDirection;
+    cityCard.querySelector("#wind").textContent = cityModel.windSpeed + " m/s,  " + currentCityModel.windDirection;
     cityCard.querySelector("#clouds").textContent = cityModel.cloudiness + "%";
     cityCard.querySelector("#pressure").textContent = cityModel.pressure + " hpa";
     cityCard.querySelector("#humidity").textContent = cityModel.humidity + "%";

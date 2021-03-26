@@ -39,10 +39,9 @@ function notifyModels(obj) {
     actualCards = cards.filter(item => item[0] != id);
     localStorage.setItem("cities", JSON.stringify(actualCards));
     const coordsToDelete = obj.parentElement.parentElement.querySelector("#coords").textContent;
-
-    for (const model of models) {
+    for (const model of cityModels) {
         if (model.coordinates == coordsToDelete) {
-            models = models.filter((value) => value.coordinates != coordsToDelete);
+            cityModels = cityModels.filter((value) => value.coordinates != coordsToDelete);
         }
     }
 }
