@@ -1,4 +1,3 @@
-
 class CityModel {
     name;
     temperature;
@@ -11,6 +10,7 @@ class CityModel {
     locationLat;
     locationLon;
     coordinates;
+
     static buildModel(response) {
         let city = new CityModel();
 
@@ -64,29 +64,26 @@ let cityModels = [];
 
 async function buildModelFrom(url) {
     flag = 0;
-    const response = await fetch(url)
-        try {
-            const city = await response.json();
-            currentCityModel = CityModel.buildModel(city);
-            for (const model of cityModels) {
-                if (model.name == currentCityModel.name) {
-                    if (model.name == cityModels[0].name) {
-                        flag = 1;
-                        return flag;
-                    } else {
-                        alert(currentCityModel.name + " already in your favourites!");
-                        flag = 1;
-                        return flag;
-                    }
+    const response = await fetch(url);
+    try {
+        const city = await response.json();
+        currentCityModel = CityModel.buildModel(city);
+        for (const model of cityModels) {
+            if (model.name == currentCityModel.name) {
+                if (model.name != cityModels[0].name) {
+                    alert(currentCityModel.name + " already in your favourites!");
                 }
+                flag = 1;
+                return flag;
             }
-            cityModels.push(currentCityModel);
-            return flag;
-
-        } catch (error) {
-            alert("Request error! Maybe entered city name is incorrect.");
-            flag = 1;
-            return flag;
         }
+        cityModels.push(currentCityModel);
+        return flag;
+
+    } catch (error) {
+        alert("Request error! Maybe entered city name is incorrect.");
+        flag = 1;
+        return flag;
+    }
 }
 
