@@ -15,15 +15,15 @@ class CityModel {
         let city = new CityModel();
 
         city.name = response.name;
-        city.temperature = Math.round(response.main.temp);
-        city.iconSrc = imageRequest(response.weather[0].icon);
-        city.windSpeed = response.wind.speed;
-        city.windDirection = CityModel.getWindDirection(response.wind.deg);
-        city.cloudiness = response.clouds.all;
-        city.pressure = response.main.pressure;
-        city.humidity = response.main.humidity;
-        city.locationLat = response.coord.lat;
-        city.locationLon = response.coord.lon;
+        city.temperature = Math.round(response.temperature);
+        city.iconSrc = imageRequest(response.icon);
+        city.windSpeed = response.windSpeed;
+        city.windDirection = response.windDirection;
+        city.cloudiness = response.cloudiness;
+        city.pressure = response.pressure;
+        city.humidity = response.humidity;
+        city.locationLat = response.latitude;
+        city.locationLon = response.longitude;
         city.coordinates = "[" + city.locationLat.toString() + ", " + city.locationLon.toString() + "]";
 
         return city;
@@ -68,15 +68,15 @@ async function buildModelFrom(url) {
     try {
         const city = await response.json();
         currentCityModel = CityModel.buildModel(city);
-        for (const model of cityModels) {
-            if (model.name == currentCityModel.name) {
-                if (model.name != cityModels[0].name) {
-                    alert(currentCityModel.name + " already in your favourites!");
-                }
-                flag = 1;
-                return flag;
-            }
-        }
+        // for (const model of cityModels) {
+        //     if (model.coordinates == currentCityModel.coordinates) {
+        //         if (model.name != cityModels[0].name) {
+        //             alert(currentCityModel.name + " already in your favourites!");
+        //         }
+        //         flag = 1;
+        //         return flag;
+        //     }
+        // }
         cityModels.push(currentCityModel);
         return flag;
 
@@ -87,3 +87,35 @@ async function buildModelFrom(url) {
     }
 }
 
+async function saveCityToFavourites(fullCityName) {
+    console.log(fullCityName + "Heeeeeereee")
+    const url = `http://localhost:3000/weather/favourites?city=${fullCityName}`;
+
+    return await fetch(url, {
+        method: "POST"
+    });
+}
+
+async function deleteCityFromFavourites(fullCityName) {
+    const url = `http//localhost:3000/weather/favourites?city=${fullCityName}`;
+    console.log(url)
+    let response = await fetch(url, {
+        method: "DELETE"
+    });
+}
+
+async function getFavourites() {
+    const url = `http://localhost:3000/weather/favourites`;
+    const favourites = [];
+
+    let response = await fetch(url);
+    if (response.ok) {
+        let json = await response.json();
+        for (let i = 0; i < json.length; i++) {
+            favourites[i] = json[i].city;
+        }
+        return favourites;
+    } else {
+        return response.status;
+    }
+}
