@@ -2,11 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bb03b956-50b5-478a-b3d5-ccc8efdcf577" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/js/apiRequest.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/WeatherITMO.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/WeatherITMO.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/handler.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/handler.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/model.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/model.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/provider.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/provider.js" afterDir="false" />
@@ -28,10 +27,10 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../weather_backend" />
   </component>
   <component name="ProjectId" id="1oswT0PVDEre6gPLX0b1zTTdBEu" />
-  <component name="ProjectLevelVcsManager">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
@@ -105,7 +104,10 @@
       <workItem from="1617012047062" duration="40000" />
       <workItem from="1617012618960" duration="1468000" />
       <workItem from="1618567181658" duration="5207000" />
-      <workItem from="1618587884200" duration="7955000" />
+      <workItem from="1618587884200" duration="8535000" />
+      <workItem from="1618598966124" duration="1161000" />
+      <workItem from="1619082908137" duration="40000" />
+      <workItem from="1619082952081" duration="4336000" />
     </task>
     <servers />
   </component>
@@ -120,6 +122,10 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="184" y="109" width="1071" height="706" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.900@0.0.1440.900" timestamp="1616430809026" />
+    <state x="460" y="256" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1619083176420">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="460" y="256" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1440.900@0.0.1440.900" timestamp="1619083176420" />
     <state x="458" y="201" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1615403936125">
       <screen x="0" y="0" width="1440" height="900" />
     </state>

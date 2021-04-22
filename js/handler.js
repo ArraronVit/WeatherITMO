@@ -16,12 +16,8 @@ async function addCard(city) {
 
 async function clickAdd(event) {
     const city = [event.target.querySelector("#add-city-name").value];
-    // console.log("GGGGGGG" + city)
     const result = await addCard(city);
-    if (result === 0) {
-        // actualCards.push(city);
-        // localStorage.setItem("cities", JSON.stringify(actualCards));
-    } else {
+    if (result != 0) {
         deleteItemByCity(city);
     }
 }
@@ -33,18 +29,7 @@ async function clickDelete(obj) {
 
 async function notifyModels(obj) {
     const city = obj.parentElement.parentElement.querySelector("#city-name").textContent;
-    // let cards;
-    // if (localStorage.getItem("cities") !== null) {
-    //     cards = JSON.parse(localStorage["cities"]);
-    // }
-    // actualCards = cards.filter(item => item[0] != id);
-    // localStorage.setItem("cities", JSON.stringify(actualCards));
-    // const coordsToDelete = obj.parentElement.parentElement.querySelector("#coords").textContent;
-    // for (const model of cityModels) {
-    //     if (model.coordinates == coordsToDelete) {
-    //         cityModels = cityModels.filter((value) => value.coordinates != coordsToDelete);
-    //     }
-    // }
+    console.log("ddeeeeeeee" + city)
     await deleteCityFromFavourites(city)
 }
 

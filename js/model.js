@@ -28,34 +28,6 @@ class CityModel {
 
         return city;
     }
-
-    static getWindDirection(deg) {
-        if (deg > 337.5) {
-            return "North";
-        }
-        if (deg > 292.5) {
-            return "North-west";
-        }
-        if (deg > 247.5) {
-            return "West";
-        }
-        if (deg > 202.5) {
-            return "South-west";
-        }
-        if (deg > 157.5) {
-            return "South";
-        }
-        if (deg > 122.5) {
-            return "South-east";
-        }
-        if (deg > 67.5) {
-            return "East";
-        }
-        if (deg > 22.5) {
-            return "North-east";
-        }
-        return "North";
-    }
 }
 
 let flag = 0;
@@ -68,15 +40,15 @@ async function buildModelFrom(url) {
     try {
         const city = await response.json();
         currentCityModel = CityModel.buildModel(city);
-        // for (const model of cityModels) {
-        //     if (model.coordinates == currentCityModel.coordinates) {
-        //         if (model.name != cityModels[0].name) {
-        //             alert(currentCityModel.name + " already in your favourites!");
-        //         }
-        //         flag = 1;
-        //         return flag;
-        //     }
-        // }
+        for (const model of cityModels) {
+            if (model.coordinates == currentCityModel.coordinates) {
+                if (model.name != cityModels[0].name) {
+                    alert(currentCityModel.name + " already in your favourites!");
+                }
+                flag = 1;
+                return flag;
+            }
+        }
         cityModels.push(currentCityModel);
         return flag;
 
@@ -89,7 +61,7 @@ async function buildModelFrom(url) {
 
 async function saveCityToFavourites(fullCityName) {
     console.log(fullCityName + "Heeeeeereee")
-    const url = `http://localhost:3000/weather/favourites?city=${fullCityName}`;
+    const url = `https://ancient-beyond-40342.herokuapp.com/favourites?city=${fullCityName}`;
 
     return await fetch(url, {
         method: "POST"
@@ -97,7 +69,7 @@ async function saveCityToFavourites(fullCityName) {
 }
 
 async function deleteCityFromFavourites(fullCityName) {
-    const url = `http//localhost:3000/weather/favourites?city=${fullCityName}`;
+    const url = `https://ancient-beyond-40342.herokuapp.com/favourites?city=${fullCityName}`;
     console.log(url)
     let response = await fetch(url, {
         method: "DELETE"
@@ -105,7 +77,7 @@ async function deleteCityFromFavourites(fullCityName) {
 }
 
 async function getFavourites() {
-    const url = `http://localhost:3000/weather/favourites`;
+    const url = `https://ancient-beyond-40342.herokuapp.com/favourites`;
     const favourites = [];
 
     let response = await fetch(url);
