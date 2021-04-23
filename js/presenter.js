@@ -2,7 +2,7 @@ async function layoutHeader(cityModel) {
 
     document.getElementById('big-icon-weather').src = cityModel.iconSrc;
     document.getElementById('big-wind').innerHTML = cityModel.windSpeed + " m/s,  " + cityModel.windDirection;
-    document.getElementById('big-clouds').innerHTML = cityModel.cloudiness + "%";
+    document.getElementById('big-clouds').innerHTML = cityModel.cloudiness;
     document.getElementById('big-pressure').innerHTML = cityModel.pressure + " hpa";
     document.getElementById('big-humidity').innerHTML = cityModel.humidity + "%";
     document.getElementById('big-coords').innerHTML = cityModel.coordinates;
@@ -19,7 +19,7 @@ async function layoutCard(cityCard, cityModel) {
     cityCard.querySelector("#temp").textContent = cityModel.temperature + "°C";
     cityCard.querySelector("#icon_weather").src = cityModel.iconSrc;
     cityCard.querySelector("#wind").textContent = cityModel.windSpeed + " m/s,  " + currentCityModel.windDirection;
-    cityCard.querySelector("#clouds").textContent = cityModel.cloudiness + "%";
+    cityCard.querySelector("#clouds").textContent = cityModel.cloudiness;
     cityCard.querySelector("#pressure").textContent = cityModel.pressure + " hpa";
     cityCard.querySelector("#humidity").textContent = cityModel.humidity + "%";
     cityCard.querySelector("#coords").textContent = cityModel.coordinates;

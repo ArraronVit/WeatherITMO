@@ -1,8 +1,8 @@
 const city = "Saint Petersburg";
 
 function cardDataRequest(city) {
-    console.log(city)
     const baseUrl = "https://ancient-beyond-40342.herokuapp.com/weather/city?q="
+
     return baseUrl + city
 }
 

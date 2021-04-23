@@ -1,4 +1,6 @@
 
+let isLoaded = false
+
 async function setDataHead(url) {
 
     await layoutLoader(true);
@@ -23,9 +25,12 @@ async function setDataCard(city) {
 }
 
 async function getCurrent() {
-    const data = await getFavourites()
-    for (const city of data) {
-        await addCard(city)
+    if (!isLoaded) {
+        const data = await getFavourites();
+        for (const city of data) {
+            await addCard(city);
+        }
+        isLoaded = true
     }
 }
 
@@ -34,7 +39,7 @@ navigator.geolocation.getCurrentPosition(success, error);
 async function success(position) {
     const url = currentLocationRequest(position);
     await setDataHead(url);
-    await getCurrent()
+    await getCurrent();
 }
 
 async function error(err) {

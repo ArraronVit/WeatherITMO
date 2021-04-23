@@ -10,7 +10,7 @@ async function addCard(city) {
     const cardsList = document.getElementById("list-cards");
     const clone = document.importNode(newCard, true);
     cardsList.prepend(clone);
-    console.log("NNNNNN" + city)
+
     return setDataCard(city);
 }
 
@@ -29,7 +29,6 @@ async function clickDelete(obj) {
 
 async function notifyModels(obj) {
     const city = obj.parentElement.parentElement.querySelector("#city-name").textContent;
-    console.log("ddeeeeeeee" + city)
     await deleteCityFromFavourites(city)
 }
 
